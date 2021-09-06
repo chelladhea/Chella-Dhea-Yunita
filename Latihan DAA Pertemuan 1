@@ -1,0 +1,75 @@
+Algoritma KPK dari 3 dan 4
+Step 1 Jika n=0, return nilai sebagai hasil dan stop. Jika tidak, kembali ke Step 2
+Step 2 Bagi nilai m dengan n, masukan nilai sisanya ke r
+Step 3 Masukan nilai n ke m dan nilai r ke n. Kembali ke Step 1
+Step 4 Masukan nilai a dan b
+
+Pseudocode:
+int a, b
+while n /= 0 do
+r <- a mod b
+a <- b
+b <- r
+return a
+
+int a = 4
+int b = 3
+int kpk = 0
+kpk = a*b / a, b
+print hasil kpk
+return 0
+
+===================================================================================================
+
+Fungsi untuk menukar dua variable x dan y
+
+Pseudocode:
+define swap (x,y)
+buffer = x
+x = y
+y = buffer
+
+===================================================================================================
+
+Algoritma Mencari Luas Jajargenjang
+Step 1 Menyediakan sebuah 3 variable yaitu x, y dan z
+Step 2 Masukan nilai 5 pada variable x
+Step 3 Masukan nilai 3 pada variable y
+Step 4 Melakukan perhitungan (luas=alas*tinggi)
+
+Pseudocode:
+int x = alas, y = tinggi
+luas = alas*tinggi
+     = 5*3
+print (luas) = 15
+
+===================================================================================================
+
+Algoritma Mencari Volume Tabung
+Step 1 Masukan rumus volume tabung yaitu (v=phi*r*r*t)
+Step 2 Masukan nilai jari-jari yaitu 3
+Step 3 Masukan nilai tinggi yaitu 5
+
+Pseudocode:
+a = jari-jari
+b = tinggi
+c = volume
+phi = 22/7 / 3.14
+
+c = phi*r*r*t
+
+===================================================================================================
+
+Algoritma Mencari Volume Kerucut
+Step 1 Masukan rumus volume kerucut yaitu (1/3*phi*r*r*t)
+Step 2 Masukan nilai jari-jari yaitu 5
+Step 3 Masukan nilai tinggi 4
+
+Pseudocode:
+a = diameter = 5 (r = a/2 = 2.5)
+t = tinggi = 4
+c = volume
+phi = 22/7 / 3.14
+
+c = 1/3*phi*r*r*t
+c = 1/3*3.14*2.5*2.5*4
