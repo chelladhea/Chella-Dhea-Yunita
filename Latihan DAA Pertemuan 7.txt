@@ -1,0 +1,140 @@
+def Sequential_Search(dlist, item):
+
+    pos = 0
+    found = False
+
+    while pos < len(dlist) and not found:
+        if dlist[pos] == item:
+            found = True
+        else:
+            pos = pos + 1
+
+    return found, pos
+
+===================================================================================================
+
+print(Sequential_Search(['a','b','c','d','e','f','g','h'],'g'))
+
+(True, 6)
+
+===================================================================================================
+
+bilangan = int(input('Masukkan bilangan: '))
+pangkat = int(input('Masukkan pangkat: '))
+
+def hitung_pangkat(bilangan, pangkat):
+  if pangkat > 1:
+    return bilangan * hitung_pangkat(bilangan, pangkat - 1)
+
+  return bilangan
+
+hasil = hitung_pangkat(bilangan, pangkat)
+print(f'Hasil = {hasil}')
+
+Masukkan bilangan: 4
+Masukkan pangkat: 6
+Hasil = 4096
+
+===================================================================================================
+
+n = int(input('Masukkan nilai n: '))
+
+def hitung_faktorial (n):
+  if n > 2:
+    return n * hitung_faktorial(n - 1)
+
+  return 2
+
+faktorial = hitung_faktorial(n)
+print(f'{n}! = {faktorial}')
+
+Masukkan nilai n: 5
+5! = 120
+
+===================================================================================================
+
+def string_match(string, sub_str):
+  # Brute force string matching
+  for i in range(len(string)-len(sub_str)+1):
+   index = i # index Point to the 1 Three characters to be compared
+   for j in range(len(sub_str)):
+    if string[index] == sub_str[j]:
+     index += 1
+    else:
+     break
+    if index-i == len(sub_str):
+     return i
+  return -1
+
+if __name__ == "__main__":
+ print(string_match("123456789", "56"))
+
+4
+
+===================================================================================================
+
+import random
+from itertools import permutations
+alltours = permutations
+
+def distance_tour(aTour):
+    return sum(distance_points(aTour[i - 1], aTour[i])
+        for i in range(len(aTour)))
+    
+aCity = complex
+
+def distance_points(first, second):
+    return abs(first - second)
+
+def generate_cities (number_of_cities):
+    seed=111;width=500;height=300
+    random.seed((number_of_cities, seed))
+    return frozenset(aCity(random.randint(1, width), random.randint(1,height))
+        for c in range(number_of_cities))
+
+===================================================================================================
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+
+def visualize_tour(tour, style='bo-'):
+    if len(tour) > 1000: plt,figure(figsize=(15, 10))
+    start = tour[0:1]
+    visualize_segment(tour + start, style)
+    visualize_segment(start, 'rD')
+def visualize_segment (segment, style='bo-'):
+        plt.plot([X(c) for c in segment], [Y(c) for c in segment], style, clip_on=False)
+        plt.axis('scaled')
+        plt.axis('off')
+
+def X(city): "X axis"; return city.real
+
+def Y(city): "Y axis"; return city.imag
+
+===================================================================================================
+
+from time import process_time
+from collections import Counter
+def tsp(algorithm, cities):
+    t0 = process_time()
+    tour = algorithm(cities)
+    t1 = process_time()
+    assert Counter(tour) == Counter(cities)
+    visualize_tour(tour)
+    print("{}:{} cities => tour length {:.0f}(in {:.3f} sec)".format(name(algorithm), len(tour), distance_tour(tour), t1-t0))
+
+
+def name(algorithm): return algorithm.__name__.replace('_tsp','')
+
+===================================================================================================
+
+def brute_force(cities):
+    "Generate all possible tours of the cities and choose the shortest tour."
+    return shortest_tour(alltours(cities))
+def shortest_tour(tours): return min(tours, key=distance_tour)
+
+===================================================================================================
+
+tsp(brute_force, generate_cities(10))
+
+brute_force:10 cities => tour length 1218(in 14.333 sec)
