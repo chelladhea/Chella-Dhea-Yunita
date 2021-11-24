@@ -1,0 +1,246 @@
+DAA13.ipynb
+DAA13.ipynb_
+[1]
+0s
+def bfs(graph, start):
+    visited = []
+    queue = [start]
+
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = graph[node]
+            for neighbour in neighbours:
+                queue.append(neighbour)
+    return visited
+[2]
+0s
+graph={ 'Amin' : {'Wasim', 'Nick', 'Mike'},
+         'Wasim' : {'Imran', 'Amin'},
+         'Imran' : {'Wasim', 'Faras'},
+         'Faras' : {'Imran'},
+         'Mike' : {'Amin'},
+         'Nick' : {'Amin'}}
+[4]
+0s
+bfs(graph,'Amin')
+['Amin', 'Wasim', 'Nick', 'Mike', 'Imran', 'Faras']
+[6]
+# O wasim ----
+# |          |
+# O imran    O amin ----
+# |          |         |
+# O faras    O nick    O mike
+
+
+bfs(graph, 'Wasim')
+['Wasim', 'Imran', 'Amin', 'Faras', 'Nick', 'Mike']
+[7]
+0s
+# O faras
+# |
+# O imran
+# |
+# O wasim  O nick  O mike
+# |        |       |
+# O amin ----------
+
+bfs(graph, 'Faras')
+['Faras', 'Imran', 'Wasim', 'Amin', 'Nick', 'Mike']
+[24]
+0s
+def bfs(graph, start):
+    visited = []
+    queue = [start]
+
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = graph[node]
+            for neighbour in neighbours:
+                queue.append(neighbour)
+    return visited
+[28]
+0s
+graph={ 'Rektor' : {'Warek1', 'Warek2'},
+         'Warek1' : {'Rektor'},
+         'Warek2' : {'Rektor', 'Kaprodi1', 'Kaprodi2', 'Kaprodi3'},
+         'Kaprodi1' : {'Warek2', 'DosenA', 'DosenB', 'DosenC'},
+         'Kaprodi2' : {'Warek2', 'DosenD', 'DosenE'},
+         'Kaprodi3' : {'Warek2', 'DosenF', 'DosenG'},
+         'DosenA' : {'Kaprodi1'},
+         'DosenB' : {'Kaprodi1'},
+         'DosenC' : {'Kaprodi1'},
+         'DosenD' : {'Kaprodi2'},
+         'DosenE' : {'Kaprodi2'},
+         'DosenF' : {'Kaprodi3'},
+         'DosenG' : {'Kaprodi3'}}
+[29]
+0s
+bfs(graph,'Rektor')
+['Rektor',
+ 'Warek1',
+ 'Warek2',
+ 'Kaprodi3',
+ 'Kaprodi1',
+ 'Kaprodi2',
+ 'DosenG',
+ 'DosenF',
+ 'DosenC',
+ 'DosenB',
+ 'DosenA',
+ 'DosenD',
+ 'DosenE']
+[30]
+0s
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start)
+    for next in graph[start] - visited:
+          dfs(graph, next, visited)
+    return visited
+[31]
+0s
+graph={ 'Amin' : {'Wasim', 'Nick', 'Mike'},
+         'Wasim' : {'Imran', 'Amin'},
+         'Imran' : {'Wasim', 'Faras'},
+         'Faras' : {'Imran'},
+         'Mike' : {'Amin'},
+         'Nick' : {'Amin'}}
+[33]
+0s
+dfs(graph,'Amin')
+Amin
+Wasim
+Imran
+Faras
+Nick
+Mike
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+[34]
+0s
+# O amin --------------
+# |          |         |
+# O wasim    O nick    O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari amin ke faras, geser ke nick & mike
+
+dfs(graph, 'Amin')
+Amin
+Wasim
+Imran
+Faras
+Nick
+Mike
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+[35]
+0s
+# O amin --------------
+# |          |         |
+# O wasim    O nick    O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari wasim ke faras, naik ke amin, geser ke nick & mike
+
+dfs(graph, 'Wasim')
+Wasim
+Imran
+Faras
+Amin
+Nick
+Mike
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+[36]
+# O amin --------------
+# |          |         |
+# O wasim    O nick    O mike
+# |
+# O imran
+# |
+# O faras
+#
+# naik dari faras ke amin, geser ke nick & mike
+
+dfs(graph, 'Faras')
+Faras
+Imran
+Wasim
+Amin
+Nick
+Mike
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+[37]
+0s
+# O amin --------------
+# |          |         |
+# O wasim    O nick    O mike
+# |
+# O imran
+# |
+# O faras
+#
+# naik nick ke amin, turun ke faras, geser ke mike
+
+dfs(graph, 'Nick')
+Nick
+Amin
+Wasim
+Imran
+Faras
+Mike
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+[38]
+0s
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start)
+    for next in graph[start] - visited:
+          dfs(graph, next, visited)
+    return visited
+[41]
+0s
+         'Kaprodi3' : {'Warek2', 'DosenF', 'DosenG'},
+         'DosenF' : {'Kaprodi3'},
+         'DosenG' : {'Kaprodi3'}}
+[42]
+0s
+dfs(graph,'Rektor')
+Rektor
+Warek1
+Warek2
+Kaprodi2
+DosenD
+DosenE
+Kaprodi1
+DosenC
+DosenB
+DosenA
+Kaprodi3
+DosenG
+DosenF
+{'DosenA',
+ 'DosenB',
+ 'DosenC',
+ 'DosenD',
+ 'DosenE',
+ 'DosenF',
+ 'DosenG',
+ 'Kaprodi1',
+ 'Kaprodi2',
+ 'Kaprodi3',
+ 'Rektor',
+ 'Warek1',
+ 'Warek2'}
